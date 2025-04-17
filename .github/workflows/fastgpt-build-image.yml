@@ -79,7 +79,6 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
           -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
   build-fastgpt-images-sub-route:
@@ -154,7 +153,6 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
           -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
   build-fastgpt-images-sub-route-gchat:
@@ -229,6 +227,5 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
           -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
