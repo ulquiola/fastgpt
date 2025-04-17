@@ -79,10 +79,8 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t ${Ali_Tag} \
-          -t ${Ali_Latest} \
-          -t ${Docker_Hub_Tag} \
-          -t ${Docker_Hub_Latest} \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
   build-fastgpt-images-sub-route:
     runs-on: ubuntu-22.04
@@ -156,10 +154,8 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t ${Ali_Tag} \
-          -t ${Ali_Latest} \
-          -t ${Docker_Hub_Tag} \
-          -t ${Docker_Hub_Latest} \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
   build-fastgpt-images-sub-route-gchat:
     runs-on: ubuntu-22.04
@@ -209,15 +205,15 @@ jobs:
       - name: Set image name and tag
         run: |
           if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
-            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
           else
-            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
-            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:${{ github.ref_name }}" >> $GITHUB_ENV
+            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:${{ github.ref_name }}" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
           fi
 
       - name: Build and publish image for main branch or tag push event
@@ -233,8 +229,6 @@ jobs:
           --push \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache \
-          -t ${Ali_Tag} \
-          -t ${Ali_Latest} \
-          -t ${Docker_Hub_Tag} \
-          -t ${Docker_Hub_Latest} \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:v4.9.3 \
+          -t registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest \
           .
