@@ -56,15 +56,15 @@ jobs:
       - name: Set image name and tag
         run: |
           if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           else
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           fi
 
       - name: Build and publish image for main branch or tag push event
@@ -132,15 +132,15 @@ jobs:
       - name: Set image name and tag
         run: |
           if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           else
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           fi
 
       - name: Build and publish image for main branch or tag push event
@@ -209,15 +209,15 @@ jobs:
       - name: Set image name and tag
         run: |
           if [[ "${{ github.ref_name }}" == "main" ]]; then
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           else
-            echo "Ali_Tag=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Ali_Latest=${{ secrets.ALI_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
-            echo "Docker_Hub_Tag=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:${{ github.ref_name }}" >> $GITHUB_ENV
-            echo "Docker_Hub_Latest=${{ secrets.DOCKER_IMAGE_NAME }}/fastgpt-sub-route-gchat:latest" >> $GITHUB_ENV
+            echo "Ali_Tag=***/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Ali_Latest=***/fastgpt:latest" >> $GITHUB_ENV
+            echo "Docker_Hub_Tag=/fastgpt:v4.9.3" >> $GITHUB_ENV
+            echo "Docker_Hub_Latest=/fastgpt:latest" >> $GITHUB_ENV
           fi
 
       - name: Build and publish image for main branch or tag push event
