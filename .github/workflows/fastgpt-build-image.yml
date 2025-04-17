@@ -9,7 +9,7 @@ on:
       - 'v*'
 jobs:
   build-fastgpt-images:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       # install env
       - name: Checkout
@@ -85,7 +85,7 @@ jobs:
           -t ${Docker_Hub_Latest} \
           .
   build-fastgpt-images-sub-route:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       # install env
       - name: Checkout
@@ -162,7 +162,7 @@ jobs:
           -t ${Docker_Hub_Latest} \
           .
   build-fastgpt-images-sub-route-gchat:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       # install env
       - name: Checkout
