@@ -26,6 +26,6 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
-          context: .
+          context: ./project/app
           push: true
           tags: registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest  # 替换为你的镜像名称和标签
