@@ -1,0 +1,12 @@
+修改说明：
+
+将DELETE方法改为POST请求
+在URL中添加_method=DELETE参数模拟DELETE方法
+将原请求体中的data参数提取出id和datasetId，通过URL查询参数传递
+使用encodeURIComponent对两个参数进行编码确保URL安全
+移除了请求体数据（DELETE方法规范要求不应发送请求体）
+注意：
+
+与之前修改保持一致的实现方式，确保后端通过_method参数识别原始HTTP方法
+如果后端需要其他参数（如除了id/datasetId外还有其他查询参数），需要将data中的其他参数也添加到查询字符串中
+如果后端要求使用请求头（如X-HTTP-Method-Override）来模拟方法，需要调整实现方式

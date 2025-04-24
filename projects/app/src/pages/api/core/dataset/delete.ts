@@ -13,11 +13,10 @@ import { DatasetTypeEnum } from '@fastgpt/global/core/dataset/constants';
 import { removeWebsiteSyncJobScheduler } from '@fastgpt/service/core/dataset/websiteSync';
 
 async function handler(req: NextApiRequest) {
-  const { id: datasetId } = req.query as {
-    id: string;
-  };
+  // 支持 POST 请求获取 id
+  const id = req.method === 'POST' ? req.body.id : req.query.id;
 
-  if (!datasetId) {
+  if (!id) {
     return Promise.reject(CommonErrEnum.missingParams);
   }
 
@@ -26,13 +25,13 @@ async function handler(req: NextApiRequest) {
     req,
     authToken: true,
     authApiKey: true,
-    datasetId,
+    datasetId: id,
     per: OwnerPermissionVal
   });
 
   const datasets = await findDatasetAndAllChildren({
     teamId,
-    datasetId
+    datasetId: id
   });
   const datasetIds = datasets.map((d) => d._id);
 

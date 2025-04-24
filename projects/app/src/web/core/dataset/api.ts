@@ -173,8 +173,10 @@ export const postCreateDatasetApiDatasetCollection = (
 
 export const putDatasetCollectionById = (data: UpdateDatasetCollectionParams) =>
   POST(`/core/dataset/collection/update`, data);
+// export const delDatasetCollectionById = (params: { id: string }) =>
+//   DELETE(`/core/dataset/collection/delete`, params);
 export const delDatasetCollectionById = (params: { id: string }) =>
-  DELETE(`/core/dataset/collection/delete`, params);
+  POST(`/core/dataset/collection/delete?_method=DELETE&id=${encodeURIComponent(params.id)}`);
 export const postLinkCollectionSync = (collectionId: string) =>
   POST<DatasetCollectionSyncResultEnum>(`/core/dataset/collection/sync`, {
     collectionId
@@ -186,8 +188,12 @@ export const postCreateDatasetCollectionTag = (data: CreateDatasetCollectionTagP
   POST(`/proApi/core/dataset/tag/create`, data);
 export const postAddTagsToCollections = (data: AddTagsToCollectionsParams) =>
   POST(`/proApi/core/dataset/tag/addToCollections`, data);
+// export const delDatasetCollectionTag = (data: { id: string; datasetId: string }) =>
+//   DELETE(`/proApi/core/dataset/tag/delete`, data);
 export const delDatasetCollectionTag = (data: { id: string; datasetId: string }) =>
-  DELETE(`/proApi/core/dataset/tag/delete`, data);
+  POST(
+    `/proApi/core/dataset/tag/delete?_method=DELETE&id=${encodeURIComponent(data.id)}&datasetId=${encodeURIComponent(data.datasetId)}`
+  );
 export const updateDatasetCollectionTag = (data: UpdateDatasetCollectionTagParams) =>
   POST(`/proApi/core/dataset/tag/update`, data);
 export const getDatasetCollectionTags = (
@@ -221,13 +227,18 @@ export const postInsertData2Dataset = (data: InsertOneDatasetDataProps) =>
 /**
  * update one datasetData by id
  */
+// export const putDatasetDataById = (data: UpdateDatasetDataProps) =>
+//   PUT('/core/dataset/data/update', data);
 export const putDatasetDataById = (data: UpdateDatasetDataProps) =>
-  PUT('/core/dataset/data/update', data);
+  POST('/core/dataset/data/update?_method=PUT', data);
+
 /**
  * 删除一条知识库数据
  */
+// export const delOneDatasetDataById = (id: string) =>
+//   DELETE<string>(`/core/dataset/data/delete`, { id });
 export const delOneDatasetDataById = (id: string) =>
-  DELETE<string>(`/core/dataset/data/delete`, { id });
+  POST(`/core/dataset/data/delete?_method=DELETE&id=${encodeURIComponent(id)}`);
 
 // Get quote data
 export const getQuoteData = (id: string) =>
@@ -253,8 +264,10 @@ export const getPreviewChunks = (data: PostPreviewFilesChunksProps) =>
 
 export const deleteTrainingData = (data: deleteTrainingDataBody) =>
   POST(`/core/dataset/training/deleteTrainingData`, data);
+// export const updateTrainingData = (data: updateTrainingDataBody) =>
+//   PUT(`/core/dataset/training/updateTrainingData`, data);
 export const updateTrainingData = (data: updateTrainingDataBody) =>
-  PUT(`/core/dataset/training/updateTrainingData`, data);
+  POST(`/core/dataset/training/updateTrainingData?_method=PUT`, data);
 export const getTrainingDataDetail = (data: getTrainingDataDetailBody) =>
   POST<getTrainingDataDetailResponse>(`/core/dataset/training/getTrainingDataDetail`, data);
 export const getTrainingError = (data: getTrainingErrorBody) =>
