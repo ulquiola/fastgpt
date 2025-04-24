@@ -93,9 +93,23 @@ export const getDatasetById = (id: string) => GET<DatasetItemType>(`/core/datase
 export const postCreateDataset = (data: CreateDatasetParams) =>
   POST<string>(`/core/dataset/create`, data);
 
-export const putDatasetById = (data: DatasetUpdateBody) => PUT<void>(`/core/dataset/update`, data);
+// export const putDatasetById = (data: DatasetUpdateBody) => PUT<void>(`/core/dataset/update`, data);
+// 修改为POST并添加方法覆盖
+export const putDatasetById = (data: DatasetUpdateBody) =>
+  POST<void>('/core/dataset/update', data, {
+    headers: { 'X-HTTP-Method-Override': 'PUT' }
+  });
 
-export const delDatasetById = (id: string) => DELETE(`/core/dataset/delete?id=${id}`);
+// export const delDatasetById = (id: string) => DELETE(`/core/dataset/delete?id=${id}`);
+// 修改为POST并添加方法覆盖
+export const delDatasetById = (id: string) =>
+  POST(
+    '/core/dataset/delete',
+    { id },
+    {
+      headers: { 'X-HTTP-Method-Override': 'DELETE' }
+    }
+  );
 
 export const postWebsiteSync = (data: PostWebsiteSyncParams) =>
   POST(`/proApi/core/dataset/websiteSync`, data, {

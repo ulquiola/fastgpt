@@ -14,15 +14,19 @@ export const getSystemModelDetail = (model: string) =>
 export const getSystemModelDefaultConfig = (model: string) =>
   GET<SystemModelItemType>('/core/ai/model/getDefaultConfig', { model });
 
-export const putSystemModel = (data: updateBody) => PUT('/core/ai/model/update', data);
+export const putSystemModel = (data: updateBody) =>
+  POST('/core/ai/model/update', { ...data, _method: 'PUT' });
 
-export const deleteSystemModel = (data: deleteQuery) => DELETE('/core/ai/model/delete', data);
+// export const deleteSystemModel = (data: deleteQuery) => DELETE('/core/ai/model/delete', data);
+export const deleteSystemModel = (data: deleteQuery) =>
+  POST('/core/ai/model/delete', { ...data, _method: 'DELETE' });
 
 export const getModelConfigJson = () => GET<string>('/core/ai/model/getConfigJson');
+
 export const putUpdateWithJson = (data: updateWithJsonBody) =>
-  PUT('/core/ai/model/updateWithJson', data);
+  POST('/core/ai/model/updateWithJson', { ...data, _method: 'PUT' });
 
 export const getTestModel = (data: testQuery) => GET('/core/ai/model/test', data);
 
 export const putUpdateDefaultModels = (data: updateDefaultBody) =>
-  PUT('/core/ai/model/updateDefault', data);
+  POST('/core/ai/model/updateDefault', { ...data, _method: 'PUT' });

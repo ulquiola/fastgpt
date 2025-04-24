@@ -10,7 +10,9 @@ export type deleteQuery = {
   model: string;
 };
 
-export type deleteBody = {};
+export type deleteBody = {
+  model: string;
+};
 
 export type deleteResponse = {};
 
@@ -20,9 +22,10 @@ async function handler(
 ): Promise<deleteResponse> {
   await authSystemAdmin({ req });
 
-  const { model } = req.query;
+  // 同时支持 query 和 body 中的参数
+  const modelName = req.body.model || req.query.model;
 
-  const modelData = findModelFromAlldata(model);
+  const modelData = findModelFromAlldata(modelName);
 
   if (!modelData) {
     return Promise.reject('Model not found');
@@ -32,7 +35,7 @@ async function handler(
     return Promise.reject('System model cannot be deleted');
   }
 
-  await MongoSystemModel.deleteOne({ model });
+  await MongoSystemModel.deleteOne({ model: modelName });
 
   await updatedReloadSystemModel();
 
