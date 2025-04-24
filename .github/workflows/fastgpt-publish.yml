@@ -27,6 +27,6 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./projects/app
-          file: projects/app/Dockerfile  # 明确指定 Dockerfile 路径
+          file: ./projects/app/Dockerfile  # 明确指定 Dockerfile 路径
           push: true
           tags: registry.cn-hangzhou.aliyuncs.com/ulquiola/fastgpt:latest  # 替换为你的镜像名称和标签
